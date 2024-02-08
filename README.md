@@ -1,2 +1,2 @@
 # TechN
-follow up project of MERN(revision)
+follow up project of MERN(revision).
