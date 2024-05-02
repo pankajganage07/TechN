@@ -21,10 +21,10 @@ const getAllUsers = asyncHandler(
 //@access private
 const createNewUser = asyncHandler(
     async (req, res) => {
-        const {username, password, role} = req.body
+        const {username, password, roles} = req.body
 
         //confirm user data
-        if(!username || !password || !Array.isArray(role) || !role.length){
+        if(!username || !password || !Array.isArray(roles) || !roles.length){
             return res.status(400).json({ message: 'All fields required'})
         }
 
@@ -38,7 +38,7 @@ const createNewUser = asyncHandler(
         const hashpass = await bcrypt.hash(password, 10)
 
         //create and store new user
-        const userObj = { username, 'password': hashpass, role}
+        const userObj = { username, 'password': hashpass, roles}
         const user = await User.create(userObj)
 
         if(user){
@@ -55,10 +55,10 @@ const createNewUser = asyncHandler(
 //@access private
 const updateUser = asyncHandler(
     async (req, res) => {
-        const {id, username, role, active, password} = req.body
+        const {id, username, roles, active, password} = req.body
         
         //confirm data
-        if(!id || !username || !Array.isArray(role) || !role.length || typeof active !== 'boolean'){
+        if(!id || !username || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean'){
             return res.status(400).json({ message: 'missing message field or invalid data'})
         }
 
@@ -77,7 +77,7 @@ const updateUser = asyncHandler(
 
         //if duplicate username does not exist
         user.username = username
-        user.role = role
+        user.roles = roles
         user.active = active
 
         if(password){
