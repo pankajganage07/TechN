@@ -1,5 +1,5 @@
 {
-  "name": "techn",
+  "name": "tech-notes-backend",
   "version": "1.0.0",
   "description": "follow up project of MERN(revision).",
   "main": "server.js",
@@ -18,6 +18,8 @@
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.1",
     "mongoose-sequence": "^6.0.1",
     "uuid": "^9.0.1"
